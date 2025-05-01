@@ -4,15 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class ExpenseModel {
-    private static final long id = 0L;
+    private long id = 0L;
     private String expenseName;
     private String description;
     private double amount;
-    private LocalDateTime date;
+    private LocalDate date;
+
+    public static ExpenseModel toObject(String id, String expenseName, String description, String amount, String date){
+        long newId = Long.parseLong(id);
+        double newAmount = Double.parseDouble(amount);
+        LocalDate newDate = LocalDate.parse(date);
+
+        return new ExpenseModel(newId, expenseName, description, newAmount, newDate);
+    }
 }
