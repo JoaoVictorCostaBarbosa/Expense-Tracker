@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ExpenseRepository {
     private static final String filePath = "data.csv";
 
-    private void createFile() {
+    private static void createFile() {
         File file = new File(filePath);
         if (!file.exists()) {
             try {
@@ -18,7 +18,7 @@ public class ExpenseRepository {
         }
     }
 
-    public ArrayList<ExpenseModel> readFile() {
+    public static ArrayList<ExpenseModel> readFile() {
         createFile();
         ArrayList<ExpenseModel> expenses = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class ExpenseRepository {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
 
-                expenses.add(ExpenseModel.toObject(data[0], data[1], data[2], data[3], data[4]));
+                expenses.add(ExpenseModel.toObject(data[0], data[1], data[2], data[3]));
             }
         }
         catch (IOException e) {
@@ -37,15 +37,15 @@ public class ExpenseRepository {
         return expenses;
     }
 
-    public void saveFile(ArrayList<ExpenseModel> expenses) {
+    public static void saveFile(ArrayList<ExpenseModel> expenses) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
-            writer.append("id,expenseName,description,amount,date\n");
+            int id = 0;
             for (ExpenseModel expense : expenses) {
-                writer.append(expense.getId() + ","
-                        + expense.getExpenseName() + ","
+                writer.append(id + ","
                         + expense.getDescription() + ","
                         + expense.getAmount() + ","
                         + expense.getDate() + "\n");
+                id += 1;
             }
         }
         catch (IOException e) {
@@ -53,4 +53,7 @@ public class ExpenseRepository {
         }
     }
 
+    public static void help() {
+        System.out.println("test");
+    }
 }

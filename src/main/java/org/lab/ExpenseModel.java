@@ -11,16 +11,15 @@ import java.time.LocalDate;
 @Data
 public class ExpenseModel {
     private int id;
-    private String expenseName;
     private String description;
     private double amount;
     private LocalDate date;
 
-    public static ExpenseModel toObject(String id, String expenseName, String description, String amount, String date){
+    public static ExpenseModel toObject(String id, String description, String amount, String date){
         int newId = Integer.parseInt(id);
         double newAmount = Double.parseDouble(amount);
         LocalDate newDate = LocalDate.parse(date);
 
-        return new ExpenseModel(newId, expenseName, description, newAmount, newDate);
+        return new ExpenseModel(newId, description, newAmount, newDate);
     }
 }
