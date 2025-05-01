@@ -52,8 +52,4 @@ public class ExpenseRepository {
             System.out.println("Error: " + e);
         }
     }
-
-    public static void help() {
-        System.out.println("test");
-    }
 }

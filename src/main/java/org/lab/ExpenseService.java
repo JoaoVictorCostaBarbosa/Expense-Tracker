@@ -50,4 +50,8 @@ public class ExpenseService {
         System.out.println(amount);
     }
 
+    public static void help() {
+        System.out.println("test");
+    }
+
 }

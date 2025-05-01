@@ -46,7 +46,7 @@ public class ExpenseView {
                 break;
 
             case "--help" :
-                ExpenseRepository.help();
+                ExpenseService.help();
                 break;
 
             default:
