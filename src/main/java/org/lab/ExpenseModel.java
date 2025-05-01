@@ -10,14 +10,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 public class ExpenseModel {
-    private long id = 0L;
+    private int id;
     private String expenseName;
     private String description;
     private double amount;
     private LocalDate date;
 
     public static ExpenseModel toObject(String id, String expenseName, String description, String amount, String date){
-        long newId = Long.parseLong(id);
+        int newId = Integer.parseInt(id);
         double newAmount = Double.parseDouble(amount);
         LocalDate newDate = LocalDate.parse(date);
 
